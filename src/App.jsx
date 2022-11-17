@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import abi from "./utils/WavePortal.json";
+import {ethers} from 'ethers';
 
 const getEthereumObject = () => window.ethereum;
 
@@ -38,6 +40,7 @@ const findMetaMaskAccount = async () => {
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState('');
+  const contractAddress = "0xB761767Ff8Ce32E4c36C1BD832c522F8a28Eaf63";
 
   const connectWallet = async () => {
     try {
