@@ -78,10 +78,10 @@ const App = () => {
         * Execute the actual wave from your smart contract
         */
         const waveTxn = await wavePortalContract.wave();
-        console.log("Mining...", waveTxn.hash);
+        console.log("Waving...", waveTxn.hash);
 
         await waveTxn.wait();
-        console.log("Mined -- ", waveTxn.hash);
+        console.log("Waved -- ", waveTxn.hash);
 
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
