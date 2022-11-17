@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 const getEthereumObject = () => window.ethereum;
 
@@ -15,19 +15,19 @@ const findMetaMaskAccount = async () => {
      * First make sure we have access to the Ethereum object.
      */
     if (!ethereum) {
-      console.error("Make sure you have Metamask!");
+      console.error('Make sure you have Metamask!');
       return null;
     }
 
-    console.log("We have the Ethereum object", ethereum);
-    const accounts = await ethereum.request({ method: "eth_accounts" });
+    console.log('We have the Ethereum object', ethereum);
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
 
     if (accounts.length !== 0) {
       const account = accounts[0];
-      console.log("Found an authorized account:", account);
+      console.log('Found an authorized account:', account);
       return account;
     } else {
-      console.error("No authorized account found");
+      console.error('No authorized account found');
       return null;
     }
   } catch (error) {
@@ -37,21 +37,21 @@ const findMetaMaskAccount = async () => {
 };
 
 const App = () => {
-  const [currentAccount, setCurrentAccount] = useState("");
+  const [currentAccount, setCurrentAccount] = useState('');
 
   const connectWallet = async () => {
     try {
       const ethereum = getEthereumObject();
       if (!ethereum) {
-        alert("Get MetaMask!");
+        alert('Get MetaMask!');
         return;
       }
 
       const accounts = await ethereum.request({
-        method: "eth_requestAccounts",
+        method: 'eth_requestAccounts',
       });
 
-      console.log("Connected", accounts[0]);
+      console.log('Connected', accounts[0]);
       setCurrentAccount(accounts[0]);
     } catch (error) {
       console.error(error);
@@ -65,7 +65,7 @@ const App = () => {
   useEffect(() => {
     async function getAccount() {
       const account = await findMetaMaskAccount();
-      if (account!==null) {
+      if (account !== null) {
         setCurrentAccount(account);
       }
     }
@@ -75,9 +75,7 @@ const App = () => {
   return (
     <div className="mainContainer">
       <div className="dataContainer">
-        <div className="header">
-          Hey there!
-        </div>
+        <div className="header">Hey there!</div>
 
         <div className="bio">
           I am Farza and I worked on self-driving cars so that's pretty cool
