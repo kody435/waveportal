@@ -63,10 +63,13 @@ const App = () => {
    * More technically, when the App component "mounts".
    */
   useEffect(() => {
-    const account = findMetaMaskAccount();
-    if (account !== null) {
-      setCurrentAccount(account);
+    async function getAccount() {
+      const account = await findMetaMaskAccount();
+      if (account!==null) {
+        setCurrentAccount(account);
+      }
     }
+    getAccount();
   }, []);
 
   return (
@@ -85,6 +88,9 @@ const App = () => {
           Wave at Me
         </button>
 
+        {/*
+         * If there is no currentAccount render this button
+         */}
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
