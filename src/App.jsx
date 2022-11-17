@@ -73,6 +73,7 @@ const App = () => {
 
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
+        console.log("Gotcha Waved at you in console 😆🚀");
       } else {
         console.log("Ethereum object doesn't exist!");
       }
