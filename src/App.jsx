@@ -41,6 +41,7 @@ const findMetaMaskAccount = async () => {
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState('');
   const contractAddress = "0xB761767Ff8Ce32E4c36C1BD832c522F8a28Eaf63";
+  const contractABI = abi.abi;
 
   const connectWallet = async () => {
     try {
